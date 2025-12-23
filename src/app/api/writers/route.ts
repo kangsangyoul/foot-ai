@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateDrafts } from '@/lib/writers';
+import { generateAllDrafts } from '@/lib/writers';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,9 +12,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { draftA, draftB } = await generateDrafts(prompt);
+    const drafts = await generateAllDrafts(prompt);
 
-    return NextResponse.json({ draftA, draftB });
+    if (drafts.length === 0) {
+      return NextResponse.json(
+        { error: 'No AI models were able to generate responses. Please check your API keys.' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ drafts });
   } catch (error) {
     console.error('Error generating drafts:', error);
     return NextResponse.json(
