@@ -152,6 +152,24 @@ The FOOT AI editor uses a specialized system prompt that:
 - Produces a single, publication-ready output
 - Never mentions the editing process or other drafts
 
+## Cloud Deployment
+
+### Deploy to Vercel (Recommended)
+
+The easiest way to deploy your FOOT AI app is using Vercel:
+
+1. Push your code to GitHub
+2. Visit [Vercel](https://vercel.com) and sign up
+3. Click "New Project" and import your GitHub repository
+4. Add environment variables:
+   - `ANTHROPIC_API_KEY`
+   - `OPENAI_API_KEY`
+5. Click "Deploy"
+
+Your app will be live in 2-3 minutes with a URL like `https://foot-ai-xxx.vercel.app`
+
+**📖 For detailed deployment instructions** including Netlify, Railway, AWS, and more, see [DEPLOYMENT.md](./DEPLOYMENT.md)
+
 ## Development
 
 ### Build for production:
